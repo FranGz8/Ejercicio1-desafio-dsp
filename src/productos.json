@@ -1,0 +1,38 @@
+[ 
+    {
+        "id": 1,
+        "nombre":"Manzana",
+        "precio": "0.35",
+        "cantidad": "1"
+    },
+    {
+        "id": 2,
+        "nombre":"Galletas",
+        "precio": "3.75",
+        "cantidad": "1"
+    },
+    {
+        "id": 3,
+        "nombre":"Pollo",
+        "precio": "2.50",
+        "cantidad": "1"
+    },
+    {
+        "id": 4,
+        "nombre":"Pan",
+        "precio": "1.25",
+        "cantidad": "1"
+    },
+    {
+        "id": 5,
+        "nombre":"Mango",
+        "precio": "0.50",
+        "cantidad": "1"
+    },
+    {
+        "id": 6,
+        "nombre":"Jugo",
+        "precio": "1.75",
+        "cantidad": "1"
+    }
+]

@@ -1,38 +1,50 @@
-.App {
-  text-align: center;
+    .App-content {
+    background-color: #61dafb;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    }
+    form button {
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    margin: 2px 0;
+    border: solid 1px transparent;
+    border-radius: 4px;
+    padding: 0.5em 1em;
+    color: #ffffff;
+    background-color: darkgreen;
+    height: 30px;
+width: 120px;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h3 {
+margin: 0;
 }
+.list {
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+flex-wrap: wrap;
+margin: 5px;
+flex-direction: row;
+align-items: flex-end;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.btn-delete {
+cursor: pointer;
+display: inline;
+text-align: center;
+text-decoration: none;
+border: solid 1px transparent;
+border-radius: 4px;
+color: #ffffff;
+background-color: red;
+height: 30px;
+width: 30px;
 }
-
-.App-link {
-  color: #61dafb;
+.cantidad{
+  margin-left: 45%;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.precio{
+  display: block;
 }
