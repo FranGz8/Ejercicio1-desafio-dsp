@@ -6,12 +6,18 @@
     font-size: calc(10px + 2vmin);
     color: white;
     }
+
+    form {
+    align-self: center;
+
+    }
+
     form button {
     cursor: pointer;
     display: inline-block;
     text-align: center;
     text-decoration: none;
-    margin: 2px 0;
+    margin: 2px 100px;
     border: solid 1px transparent;
     border-radius: 4px;
     padding: 0.5em 1em;
@@ -20,15 +26,16 @@
     height: 30px;
 width: 120px;
 }
+
 h3 {
 margin: 0;
 }
 .list {
-
-flex-wrap: wrap;
-margin: 5px;
+display: flex;
+margin: 0px 50px 0px 50px;
 flex-direction: row;
 align-items: flex-end;
+flex-wrap: wrap;
 }
 .btn-delete {
 cursor: pointer;
@@ -45,6 +52,43 @@ width: 30px;
 .cantidad{
   margin-left: 45%;
 }
-.precio{
-  display: block;
+.list .precio{
+margin-left: 500px;
+}
+
+
+.selectProducto {
+  margin:20px auto 40px auto;	
+  border:1px solid #d9d9d9;
+  height:30px;
+  overflow: hidden;
+  width: 230px;
+  position:relative;
+}
+select {
+  background: white;
+  border: none;
+  font-size: 14px;
+  height: 30px;
+  padding: 5px;
+  width: 250px;
+}
+select:focus{ outline: none;}
+
+.selectProducto::after{
+ content:"\025be";
+ display:table-cell;
+ padding-top:7px;
+ text-align:center;
+ width:30px;
+ height:30px;
+ background-color:#d9d9d9;
+ position:absolute;
+ top:0;
+ right:0px;	
+ pointer-events: none;
+}
+
+.titulo{
+  text-align: center;
 }

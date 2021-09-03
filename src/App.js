@@ -7,7 +7,7 @@ const App = () => {
   return (
     <div className="App">
       <div className="App-content">
-        <p>
+        <p className="titulo">
           Lista de Compras
         </p>
         <Form />

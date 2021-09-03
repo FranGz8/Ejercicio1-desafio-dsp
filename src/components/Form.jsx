@@ -45,21 +45,25 @@ const Form = () => {
         setTodos(newTodos)
     }
 
-    const cambioCantidad = e =>{
-        alert('entrando en cambio cantidad '+ e.target.value)
-        setTotal(total+e.target.value)
+    const cambioCantidad = indice2 =>{
+        alert('entrando en cambio cantidad '+indice2)
+
+        
+
+        alert('nombre de indice: '+todos[indice2]);
+        //setTotal(total+e.target.value)
     }
 
     return (
         <>
             <form onSubmit={e=>e.preventDefault()}>
-                <select name="todo" onChange={handleChange}>
+                <select name="todo" className="selectProducto" onChange={handleChange}>
                     <option selected disabled="true">Seleccion de producto</option>
                     {
                     Producto.map((nomProducto)=> (<option value={nomProducto.id}>{nomProducto.nombre}</option>) )
                     }
                 </select>
-                <button onClick={handleClick}>Agregar</button>
+                <button onClick={handleClick} className="btnAgregar">Agregar</button>
             </form>   
 
             {
