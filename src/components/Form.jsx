@@ -38,9 +38,11 @@ const Form = () => {
         }
     }
 
-    const deleteTodo = indice => {
-        const newTodos = [...todos]
-        newTodos.splice(indice,1)
+    const deleteTodo = index => {
+        const newTodos = []
+        todos.forEach(todo => {
+            if(todo['id'] != index) newTodos.push(todo)
+        })
         setTodos(newTodos)
     }
 
