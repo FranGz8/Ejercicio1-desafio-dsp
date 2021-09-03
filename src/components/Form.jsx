@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Todo from '../components/Todo';
 import Producto from '../productos.json';
 
@@ -7,48 +7,71 @@ import Producto from '../productos.json';
 
 const Form = () => {
 
-    const [todo, setTodo]=useState({})
+    const [todo, setTodo]=useState(null)
     const [total, setTotal]=useState(0)
-    const [cantidad1, setCantidad1]=useState(0)
     const [todos, setTodos] = useState([])
 
     const handleChange = e => {
-        setTodo({[e.target.name]: e.target.options[e.target.selectedIndex].text})
+        if (e.target.selectedIndex) {
+            let index = e.target.selectedIndex - 1
+            setTodo({
+                id: index,
+                cantidad: 1 
+            })
+        }
     }
-
 
     const handleClick = e => {
-        if(Object.keys(todo).length === 0 || todo.todo.trim() === ''){
+        if(!todo){
             alert('Debe seleccionar un producto')
             return
-        }
-        else{
-            Producto.map((nomPro)=>{
-                if(nomPro.nombre === todo.todo){
-                    setCantidad1(nomPro.precio)
-                    return(
-                            //obtengo el valor del precio del producto
-                            alert('precio: '+nomPro.precio)
-                        )
+        } else {
+            let error = false
+            todos.forEach(old_todo => {
+                if (old_todo['id'] == todo['id']) {
+                    error = true
+                    alert('Item ya agregado')
+                    return;
                 }
-                return(null)
             })
-            setTodos([...todos,todo])            
+            if(!error) setTodos([...todos, todo])
         }
     }
 
-    
-    
     const deleteTodo = indice => {
         const newTodos = [...todos]
         newTodos.splice(indice,1)
         setTodos(newTodos)
     }
 
-    const cambioCantidad = e =>{
-        alert('entrando en cambio cantidad '+ e.target.value)
-        setTotal(total+e.target.value)
+    const cambioCantidad = (value, key) =>{
+        let new_todos = []
+        let num = parseInt(value)
+        if(isNaN(num) && value != '') {
+            alert('Debe ingresar un numero valido')
+        }else if(num <= 0) {
+            alert('La cantidad debe ser mayor a cero')
+            value = 1
+        }
+        todos.forEach(todo => {
+            if(todo['id'] == key){
+                todo['cantidad'] = value
+            }
+            new_todos.push(todo)
+        })
+        setTodos(new_todos)
     }
+
+    useEffect(() => {
+        let total = 0
+        todos.forEach(todo => {
+            let cantidad = parseInt(todo['cantidad'])
+            if (!isNaN(cantidad)) {
+                total += (parseFloat(Producto[todo['id']]['precio']) * cantidad)
+            }
+        })
+        setTotal(total)
+    })
 
     return (
         <>
@@ -56,16 +79,14 @@ const Form = () => {
                 <select name="todo" onChange={handleChange}>
                     <option selected disabled="true">Seleccion de producto</option>
                     {
-                    Producto.map((nomProducto)=> (<option value={nomProducto.id}>{nomProducto.nombre}</option>) )
+                        Producto.map((nomProducto)=> (<option value={nomProducto.id}>{nomProducto.nombre}</option>) )
                     }
                 </select>
                 <button onClick={handleClick}>Agregar</button>
-            </form>   
-
+            </form>
             {
-                todos.map((value, index) => (<Todo todo={value.todo} key={index} index={index}  cambioCantidad={cambioCantidad} cantidad={cantidad1}  deleteTodo={deleteTodo}/>))
-
-            }   
+                todos.map((todo) => (<Todo index={todo['id']} cantidad={todo['cantidad']} deleteTodo={deleteTodo} cambioCantidad={cambioCantidad} />))
+            }
             <div>
                 <p>TOTAL: {total}</p>
             </div>
